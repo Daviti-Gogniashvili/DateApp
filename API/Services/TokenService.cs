@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using API.Data;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -18,18 +19,16 @@ namespace API.Services
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenKey"]));
         }
 
-        public string CreateToken(AppUsers appUsers)
-        {
-            var claims = new List<Claim> {
+        public string CreateToken(AppUsers appUsers) {
+            var claim = new List<Claim> {
                 new Claim(JwtRegisteredClaimNames.NameId, appUsers.UserName)
             };
 
-            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
-
             var tokenDecriptor = new SecurityTokenDescriptor {
-                Subject = new ClaimsIdentity(claims),
+                Subject = new ClaimsIdentity(claim),
                 Expires = DateTime.Today.AddDays(7),
-                SigningCredentials = creds
+                SigningCredentials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature)
+                
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();

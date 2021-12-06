@@ -10,6 +10,6 @@ namespace API.DTOs
 
         [Required]
         public string password { get; set; }
-
+        
     }
 }

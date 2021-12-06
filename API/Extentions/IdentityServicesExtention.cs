@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace API.Extentions
 {
-    public static class IdentityServiceExtentions
+    public static class IdentityServicesExtention
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration) {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -15,13 +15,11 @@ namespace API.Extentions
                     options.TokenValidationParameters = new TokenValidationParameters {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenKey"])),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
+                        ValidateAudience = false,
+                        ValidateIssuer = false
                     };
                 });
-
             return services;
         }
-        
     }
 }
