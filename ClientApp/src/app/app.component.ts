@@ -1,26 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { User } from './_models/users';
+import { AccountService } from './_services/account.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'Dating App';
-  public displayedColumns: string[] = ['id', 'userName'];
-  public users: Users[];
 
-  constructor(private http: HttpClient) {}
+  changeToTrue: boolean;
+
+  constructor(private accountservice: AccountService) {}
 
   ngOnInit() {
-    this.http.get<Users[]>('https://localhost:5001/API/AppUsers').subscribe(result => {
-      this.users = result;
-    }, error => console.error(error));
-  }
-}
+    this.setCurrentUser();
 
-interface Users {
-  id: number;
-  userName: string;
+  }
+
+  setCurrentUser() {
+    const user: User = JSON.parse(localStorage.getItem('user')!);
+    this.accountservice.setCurrentUser(user);
+  }
+
+  getCommand(event: boolean) {
+    this.changeToTrue = event;
+  }
 }

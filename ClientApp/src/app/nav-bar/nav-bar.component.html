@@ -1,0 +1,78 @@
+<nav class="topbar">
+  <div class="nav_container">
+    <div class="logo">
+      <a href="#">
+        <i class="bx bxl-instagram"></i>
+        <span class="logo_name">Dating App</span>
+      </a>
+    </div>
+    <div class="nav_list_container">
+      <ul class="nav_list" *ngIf="accountservice.currentUser$ | async">
+        <li>
+          <a href="#">
+            <span class="link_name">Matches</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="link_name">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="link_name">Users</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="link_name">Edit Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="link_name">About</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="nav_list" *ngIf="(accountservice.currentUser$ | async) === null">
+        <li>
+          <a href="#">
+            <span class="link_name">About</span>
+          </a>
+        </li>
+        <li>
+        </li>
+      </ul>
+    </div>
+    <form
+      *ngIf="(accountservice.currentUser$ | async) === null"
+      #loginForm="ngForm"
+      class="login_register"
+      (ngSubmit)="login()"
+      autocomplete="off"
+    >
+      <div class="input_part">
+        <input
+          type="text"
+          placeholder="Username"
+          name="userName"
+          [(ngModel)]="model.userName"
+          id="UserName"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          [(ngModel)]="model.password"
+          id="Password"
+        />
+      </div>
+      <div class="button_part">
+        <button id="buttonLI_LO">Login</button>
+      </div>
+    </form>
+    <div class="button_part" *ngIf="accountservice.currentUser$ | async">
+      <button id="buttonLI_LO" (click)="logout()">Log Out</button>
+    </div>
+  </div>
+</nav>

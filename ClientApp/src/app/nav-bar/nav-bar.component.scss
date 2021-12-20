@@ -1,0 +1,161 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background: hsl(245, 29%, 9%);
+}
+
+.topbar .nav_container {
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.topbar .nav_container .toggler {
+  display: none;
+}
+
+.topbar .logo {
+  height: 60px;
+  width: 60%;
+}
+
+.topbar .logo a {
+  text-decoration: none;
+  width: 210px;
+  display: flex;
+  align-items: center;
+}
+
+.topbar .logo i {
+  font-size: 30px;
+  color: #fff;
+  height: 60px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 60px;
+}
+
+.topbar .logo .logo_name {
+  white-space: nowrap;
+  position: relative;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 60px;
+}
+
+.nav_list_container {
+  height: 60px;
+  width: 80%;
+}
+
+.topbar .nav_list {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 80%;
+
+  margin: 0;
+  list-style-type: none;
+}
+
+.topbar .nav_list a {
+  line-height: 60px;
+  padding: 13px;
+  margin: 2px;
+  text-decoration: none;
+}
+
+.topbar .nav_list button {
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  background: transparent;
+}
+
+.topbar .nav_list .link_name {
+  white-space: nowrap;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.topbar .nav_list #register {
+  color: lightgreen;
+}
+
+.topbar .login_register {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.topbar .login_register .input_part {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.topbar .login_register .input_part input {
+  height: 30px;
+  width: 160px;
+  outline-width: 0;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  line-height: 60px;
+  text-indent: 10px;
+}
+
+.topbar .login_register .button_part {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topbar .login_register .button_part button {
+  height: 31px;
+  width: 70px;
+  font-size: 1em;
+  font-weight: 600;
+  background: hsl(245, 29%, 9%);
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgreen;
+  color: lightgreen;
+  border-radius: 5px;
+  float: right;
+}
+
+.button_part {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.button_part button {
+  margin: 0 80px 0 80px;
+  height: 31px;
+  width: 100px;
+  font-size: 1em;
+  font-weight: 600;
+  background: hsl(245, 29%, 9%);
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgreen;
+  color: lightgreen;
+  border-radius: 5px;
+  float: right;
+}
