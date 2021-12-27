@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,26 +11,31 @@ import { AccountService } from '../_services/account.service';
 export class NavBarComponent implements OnInit {
   public model: any = {};
 
-  constructor(public accountservice: AccountService) {
+  constructor(
+    public accountservice: AccountService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
-  }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login() {
     this.accountservice.login(this.model).subscribe({
       next: (nxt) => console.log(nxt),
-      error: (err) => console.error(err),
-      complete: () => console.info('complete'),
+      error: (err) => {
+        console.error(err), this.toastr.error(err.error);
+      },
+      complete: () => {
+        console.info('complete'), this.router.navigateByUrl('/members');
+      },
     });
   }
 
   logout() {
     this.accountservice.logout();
+    this.router.navigateByUrl('/');
     var x = document.getElementById('buttonLI_LO');
     x!.textContent = 'Login';
-    x!.style.width ="70px";
-
+    x!.style.width = '70px';
   }
 }
