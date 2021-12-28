@@ -1,0 +1,5 @@
+<div class="container">
+    <h1>Not Found</h1>
+    <button class="btn btn-info btn-lg" routerLink="/" *ngIf="accountservice.currentUser$ | async" routerLink="/members">Return to Matches page</button>
+    <button class="btn btn-info btn-lg" routerLink="/" *ngIf="(accountservice.currentUser$ | async) === null" routerLink="/">Return to Home page</button>
+</div>
